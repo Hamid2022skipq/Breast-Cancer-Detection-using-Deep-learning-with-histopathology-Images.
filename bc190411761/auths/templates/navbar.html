@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg shadow-lg bg-light mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img
+          src="https://cdn.pixabay.com/photo/2013/07/12/14/46/ribbon-148761_1280.png"
+          alt="Logo"
+          width="30px"
+          height="30px"
+          class="ms-5"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav justify-content-center ms-auto me-5 px-5"> 
+          
+          <li class="nav-item ">
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-danger btn-opacity-50 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{Name}}
+              </button>
+              <ul class="dropdown-menu col-md-px-5">
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <a class="nav-link text-dark" href={% url 'change_pass1' %}>
+                      Change Password
+                    </a>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <a class="nav-link text-dark" href={% url "signup" %}>
+                      Registration
+                    </a>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <a class="nav-link text-dark" href={% url 'log_out' %}>Log Out</a>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <a class="nav-link text-dark" href={% url 'login' %}>Log In</a>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

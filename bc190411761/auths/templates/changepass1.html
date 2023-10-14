@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+</head>
+<body>
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="row flex-column flex-md-row">
+            <div class="col-md-6">
+               
+                <div class="mt-3 mt-md-5 pt-0 pt-md-4">
+                    <img class="img-fluid img-thumbnail" width="100%" style="object-fit: contain;" height="70vh" src="https://images.pexels.com/photos/2882630/pexels-photo-2882630.jpeg?auto=compress&cs=tinysrgb&" alt="signup">
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                
+                <div class="d-flex justify-content-center align-items-center mt-3 mt-md-5 pt-0 pt-md-5">
+
+                    <form action="" method="post" class="mt-0 mt-md-3 pt-0 pt-md-3">
+                        {% csrf_token %}
+                        <!-- Empty Field error -->
+                        {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                        {{error}} <br>
+                        {% endfor %}
+                        {% endif %}
+                        <!-- Form show -->
+                        {% for fm in form %}
+                       {{fm.label_tag}}<span class='text-danger px-1'>*</span> <br> {{fm}}{{fm.errors|striptags}} <br><br>
+                        {% endfor %}
+                        
+                     <center>   <button type="submit" class="btn btn-outline-danger">Change Password</button></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

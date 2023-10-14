@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi, {{Name}}</title>
+</head>
+<body>
+    
+    {% block content %}
+    
+    {% if messages %}
+    
+    {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+    {% endfor %}
+    {% endif %} <br>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row flex-column flex-md-row">
+            <div class=" col-md-6 ">
+                <div class="mt-0 mt-md-4 pt-0 pt-md-3">
+                    <img class="img-fluid img-thumbnail rounded" width="100%" style="object-fit: contain;" height="" src="https://images.pexels.com/photos/48604/pexels-photo-48604.jpeg?auto=compress&cs=tinysrgb&" alt="Dashboard">
+                </div>
+            </div>
+            <div class=" col-md-6 ">   
+                <div class="d-flex justify-content-center align-items-center mt-3 mt-md-4 pt-0 pt-md-3" >
+                    
+                     <form action="" method="post" enctype='multipart/form-data'>
+                         {% csrf_token%}
+                         <!-- Empty Field error -->
+                         {% if form.non_field_errors %}
+                         {% for error in form.non_field_errors %}
+
+                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                             {{error}} 
+                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         </div>
+                         {% endfor %}
+                         {% endif %}
+                     <div class="mt-0 mt-md-5 pt-0 pt-md-5">
+                         <!-- Form show -->
+                         {% for fm in form %}
+
+                        <span class='md-pe-2 text-danger'>{{fm.label_tag}}</span> <br> <br><span class="text-primary ">  {{fm}}{{fm.errors|striptags}}</span> <br><br>
+                         {% endfor %}
+                     <button type="submit" class="btn btn-outline-primary col-4 col-md-8">Predict</button>
+                    </div>
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
+</body>
+</html>

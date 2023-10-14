@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+</head>
+<body >
+    {% block content %}
+    <div class="container  d-flex justify-content-center align-items-center mt-5">
+        <div class="row flex-column flex-md-row mx-5">
+            <div class="col-md-6 my-2 px-5">
+                <div class="col-mb-4 ">
+
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    {% for fm in form %}
+                    <span class="pt-1">{{fm.label_tag}}</span> <br>{{fm}} {{fm.errors|striptags}} <br>
+
+                    {% endfor %}
+                    {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show  " role="alert">
+                            {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    
+                 <button type="submit" class="btn col-md-7 mx-2  mt-4 col-4 btn-outline-primary">Registor</button>
+                    </form>
+                </div>
+            
+        </div>
+        <div class="col-md-6 mt-4">
+            <div class="mb-4">
+                <img class="img-fluid img-thumbnail" width="100%" style="object-fit: contain;" height="70vh" src="https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg?auto=compress&cs=tinysrgb&" alt="signup">
+            </div>
+        </div> 
+    </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>
